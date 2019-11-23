@@ -62,12 +62,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private SceneView scnView;
 
 
-    ////////////////////////////////podometre///////////////////////////
-/*
-    private SimpleStepDetector simpleStepDetector;
-    private SensorManager sensorManager;
-    private Sensor accel;
-    private static final String TEXT_NUM_STEPS = "Number of Steps: ";*/
+
+
     private int numSteps;
     Boolean silence = true;
 
@@ -113,6 +109,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         pghunger = (ProgressBar) findViewById( R.id.pb2 );
         pgpower = (ProgressBar) findViewById( R.id.pb3 );
 
+
+        // Code : Podométre
         sensorManager = (SensorManager) getSystemService( Context.SENSOR_SERVICE );
         scnView = (SceneView) findViewById(R.id.sceneView);
 
@@ -120,7 +118,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         renderObject();
 
+
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+
         getLastLocation();
         tama = new Tamagochi(100);
         startUpdate();
@@ -155,10 +157,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    // Code : Podométre
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
+    // Code : Podométre
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (running) {
@@ -176,15 +180,24 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+
+    // lance l'activité pour la réalitée augmenté
     public void launchAr(View v){
         startActivity(new Intent(this, ArActivity.class));
     }
 
+
+    // Rendu du modéle 3d
+
     private void renderObject() {
-        ModelRenderable.builder()
+
+
+
+       ModelRenderable.builder()
                 .setSource(this, Uri.parse("slime.sfb"))
                 .build()
                 .thenAccept(renderable -> mon_modele = renderable);
+
     }
 
     private  void addToScene(ModelRenderable m){
@@ -195,11 +208,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         slime.setRenderable(m);
 
         scene.addChild(slime);
+
     }
 
 
 
-
+    // Permission pour la localisation
     private boolean checkPermissions() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -233,6 +247,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
+
+    // CODE : Géolocalisation
     @SuppressLint("MissingPermission")
     private void getLastLocation(){
         if (checkPermissions()) {
@@ -261,6 +277,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
+
+    // CODE : Géolocalisation
     @SuppressLint("MissingPermission")
     private void requestNewLocationData(){
 
@@ -278,6 +296,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+
+    // CODE : Géolocalisation
     private LocationCallback mLocationCallback = new LocationCallback() {
         @Override
         public void onLocationResult(LocationResult locationResult) {
@@ -290,6 +310,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     };
 
 
+
+    // Code : Tamagochi
     public void giveHealth(View v) {
         tama.heal();
         updateUi();

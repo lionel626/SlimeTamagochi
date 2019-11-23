@@ -22,13 +22,17 @@ public class ArActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
+
+
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
+        // Chargement du modèle 3d
         ModelRenderable.builder()
                 .setSource(this, Uri.parse("slime.sfb"))
                 .build()
                 .thenAccept(renderable -> mon_modele = renderable);
 
+        // Faire appparaitre le modèle sur la surface plane détecter
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
                     if (mon_modele == null) {
