@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+
+    <com.google.ar.sceneform.SceneView
+        android:id="@+id/sceneView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="-45dp"
+        android:layout_marginBottom="398dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pb2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10pt"
+        android:layout_marginBottom="29dp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:indeterminateOnly="false"
+        android:progress="100"
+        android:progressDrawable="@drawable/progress_bar_life" />
+
+    <ProgressBar
+        android:id="@+id/pb2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pb3"
+
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="27dp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:indeterminateOnly="false"
+        android:progress="100"
+        android:progressDrawable="@drawable/progress_bar_humour" />
+
+    <ProgressBar
+        android:id="@+id/pb3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10pt"
+        android:layout_marginBottom="155dp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:indeterminateOnly="false"
+        android:progress="100"
+        android:progressDrawable="@drawable/progress_bar_energy" />
+
+    <ImageButton
+        android:id="@+id/life"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:onClick="giveHealth"
+        android:layout_above="@+id/energy"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/life"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/energy"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:onClick="giveFood"
+        android:layout_above="@+id/humour"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/hunger" />
+
+    <ImageButton
+        android:id="@+id/humour"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:onClick="givePower"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/power" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="launchAr"
+        android:text="AR" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/textviewstep"
+        android:id="@+id/step"
+        />
+
+    <TextView
+        android:id="@+id/alt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="39dp"
+        android:text="" />
+
+
+</RelativeLayout>

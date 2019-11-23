@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">Jouer</string>
+    <string name="silent_mode">Silence</string>
+    <string name="votre_slime_est_mort">Votre Slime est mort</string>
+</resources>
